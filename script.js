@@ -3,6 +3,20 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
 
+    // ========== 自动计算年龄 ==========
+    (function () {
+        var ageEl = document.getElementById('age');
+        if (ageEl) {
+            var birth = new Date(1998, 8, 1); // 1998-09
+            var today = new Date();
+            var age = today.getFullYear() - birth.getFullYear();
+            var m = today.getMonth() - birth.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) { age--; }
+            ageEl.textContent = age;
+        }
+    })();
+
+
     // ========== 导航高亮 ==========
     var sections = document.querySelectorAll('section[id], header[id]');
     var navLinks = document.querySelectorAll('.nav-links a');
